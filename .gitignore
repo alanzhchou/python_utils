@@ -2,6 +2,10 @@
 
 .idea
 .settings
+design
+
+
+
 *.project
 *.cnf
 *.iml
