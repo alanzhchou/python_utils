@@ -1,0 +1,7 @@
+#IDEA≥£”√gitignore≈‰÷√
+
+.idea
+.settings
+*.project
+*.cnf
+*.iml
