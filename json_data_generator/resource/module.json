@@ -1,0 +1,15 @@
+{
+    "modules":{
+        "user": {
+            "howMany": 500,
+            "name":{
+                "template": "\w{15,25}",
+                "unique": true
+            },
+            "password":{
+                "template": ".{5,30}",
+                "unique": false
+            }
+        }
+    }
+}
