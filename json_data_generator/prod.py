@@ -7,7 +7,7 @@
 # python_version: 3.62
 
 import json
-from lib.xeger import Xeger
+import xeger
 
 
 

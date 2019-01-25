@@ -3,12 +3,23 @@
         "user": {
             "howMany": 500,
             "name":{
-                "template": "\w{15,25}",
+                "template": "\\w{5,15}",
                 "unique": true
             },
             "password":{
-                "template": ".{5,30}",
+                "template": "\\S{10,15}",
                 "unique": false
+            },
+            "birthday":{
+                "template": "(199[0-9])|(20[0-1][0-9])",
+                "unique": false
+            }
+        },
+        "movie": {
+            "howMany": 10,
+            "movie_id":{
+                "template": "\\d{4}",
+                "unique": true
             }
         }
     }
