@@ -26,7 +26,7 @@ setup(
     install_requires = [],
     entry_points = {
         'console_scripts': [
-            'c_print_usage=colprint:c_print_usage',
+            'colprint_usage=colprint:colprint_usage',
         ]
     }
 )
