@@ -49,24 +49,21 @@ import xeger
 """
 def get_modules_tuple(json_object:dict):
     output_modules = []
-    try:
-        for module_tuple in dict(json_object.get("modules")).items():
-            output_module = []
+    for module_tuple in dict(json_object.get("modules")).items():
+        output_module = []
 
-            # module_name
-            output_module.append(module_tuple[0])
+        # module_name
+        output_module.append(module_tuple[0])
 
-            for module_props_tuple in module_tuple[1].items():
-                # module lines number
-                if module_props_tuple[0] == "howMany":
-                    output_module.append(module_props_tuple[1])
-                # module props columns
-                else:
-                    output_module.append((module_props_tuple[0],module_props_tuple[1]["template"],module_props_tuple[1]["unique"]))
-            # finish adding one module
-            output_modules.append(tuple(output_module))
-    except Exception:
-        traceback.print_exc()
+        for module_props_tuple in module_tuple[1].items():
+            # module lines number
+            if module_props_tuple[0] == "howMany":
+                output_module.append(module_props_tuple[1])
+            # module props columns
+            else:
+                output_module.append((module_props_tuple[0],module_props_tuple[1]["template"],module_props_tuple[1]["unique"]))
+        # finish adding one module
+        output_modules.append(tuple(output_module))
     return tuple(output_modules)
 
 
@@ -85,44 +82,60 @@ def get_modules_tuple(json_object:dict):
             {"name": "bbbbbbbbbbbbbbbbbbbbbbb", "password": "abcdef"}...
         )
 """
-def json_data_generator(conf_tuple:tuple,max_length=50):
-    try:
-        output_file_name = conf_tuple[0]
-        output_lines_numbers = conf_tuple[1]
-        output_jsonlines = [output_file_name]
+def jsonlines_data_generator(conf_tuple:tuple,max_length=50):
+    output_file_name = conf_tuple[0]
+    output_lines_numbers = conf_tuple[1]
+    output_jsonlines = [output_file_name]
 
-        props = conf_tuple[2:]
+    props = conf_tuple[2:]
 
-        generator = xeger.Xeger(max_length)
+    generator = xeger.Xeger(max_length)
 
-        # generate all needed mockup data
-        output_temp_data = []
-        # use the hash table to store and example whether repeat or not
-        for prop in props:
-            output_temp_one_col_data = ""
-            if prop[2]:
-                output_temp_one_col_data = {}
-                for i in range(output_lines_numbers):
+    # generate all needed mockup data
+    output_temp_data = []
+    # use the hash table to store and example whether repeat or not
+    for prop in props:
+        output_temp_one_col_data = ""
+        if prop[2]:
+            output_temp_one_col_data = {}
+            for i in range(output_lines_numbers):
+                new_random = generator.xeger(prop[1])
+                while new_random in output_temp_one_col_data:
                     new_random = generator.xeger(prop[1])
-                    while new_random in output_temp_one_col_data:
-                        new_random = generator.xeger(prop[1])
-                    output_temp_one_col_data[new_random] = True
-                output_temp_data.append(list(output_temp_one_col_data.keys()))
-            else:
-                output_temp_one_col_data = []
-                for i in range(output_lines_numbers):
-                    output_temp_one_col_data.append(generator.xeger(prop[1]))
-                output_temp_data.append(output_temp_one_col_data)
+                output_temp_one_col_data[new_random] = True
+            output_temp_data.append(list(output_temp_one_col_data.keys()))
+        else:
+            output_temp_one_col_data = []
+            for i in range(output_lines_numbers):
+                output_temp_one_col_data.append(generator.xeger(prop[1]))
+            output_temp_data.append(output_temp_one_col_data)
 
-        for row in range(output_lines_numbers):
-            one_line = {}
-            for index,prop in enumerate(props):
-                one_line[prop[0]] = output_temp_data[index][row]
-            output_jsonlines.append(one_line)
-        return output_jsonlines
-    except Exception:
-        traceback.print_exc()
+    for row in range(output_lines_numbers):
+        one_line = {}
+        for index,prop in enumerate(props):
+            one_line[prop[0]] = output_temp_data[index][row]
+        output_jsonlines.append(one_line)
+    return tuple(output_jsonlines)
 
+
+
+
+"""
+    from the jsonlines data input , then write the jsonlines data to centainerly json file , 
+        input example : tuple 
+        the user is the json file name 
+    (
+        user,
+        {"name":"abcd","password":"aaaaaaaa"}
+        ...
+    )
+    
+        output example : json file
+    user.json
+    {"name":"abcd","password":"aaaaaaaa"}
+"""
+def write_jsonlines_file(jsonlines_data:tuple):
+    pass
 
 
 # unit test
@@ -135,7 +148,7 @@ if __name__ == "__main__":
 
         modules = get_modules_tuple(conf_json_object)
 
-    json_lines_data = json_data_generator(modules[0])
+    json_lines_data = jsonlines_data_generator(modules[0])
 
     for line in json_lines_data:
         print(line)
