@@ -17,6 +17,7 @@ from colprint.cprint import *
     This module is for simply print some colorful hints.
 """
 
+name = "colprint"
 __version__ = "0.0.1"
 
 
