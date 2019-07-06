@@ -20,7 +20,7 @@ setup(
     version = c_print.__version__,
     author = 'alanzhchou',
     author_email = 'alanzhchou@gmail.com',
-    url = 'https://github.com/alanzhchou/python_utils',
+    url = 'https://github.com/alanzhchou/python_utils/tree/master/c_print',
     description = u'for simply print some colorful hints',
     packages = ['c_print'],
     install_requires = [],
