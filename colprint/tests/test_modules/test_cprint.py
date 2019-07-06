@@ -12,7 +12,7 @@
 
 import unittest
 
-from c_print.cprint import ColorUtilError, CodeQueryError, ColorAndStyle, cprint
+from colprint.cprint import ColorUtilError, CodeQueryError, ColorAndStyle, cprint
 from tests.redirect import ListStream, redirect_stdout_to, clear_stdout_redirect
 
 

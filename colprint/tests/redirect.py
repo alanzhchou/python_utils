@@ -84,7 +84,7 @@ def clear_stderr_redirect():
 
 
 if __name__ == "__main__":
-    from c_print.cprint import cprint
+    from colprint.cprint import cprint
 
     list_stream = redirect_stdout_to(ListStream, ignore="\n")
 

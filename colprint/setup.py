@@ -13,20 +13,20 @@
 
 from setuptools import setup
 
-import c_print
+import colprint
 
 setup(
-    name = 'c_print',
-    version = c_print.__version__,
+    name = 'colprint',
+    version = colprint.__version__,
     author = 'alanzhchou',
     author_email = 'alanzhchou@gmail.com',
-    url = 'https://github.com/alanzhchou/python_utils/tree/master/c_print',
+    url = 'https://github.com/alanzhchou/python_utils/tree/master/colprint',
     description = u'for simply print some colorful hints',
-    packages = ['c_print'],
+    packages = ['colprint'],
     install_requires = [],
     entry_points = {
         'console_scripts': [
-            'c_print_usage=c_print:c_print_usage',
+            'c_print_usage=colprint:c_print_usage',
         ]
     }
 )

@@ -11,16 +11,16 @@
 # email: alanzhchou@gmail.com
 
 
-from c_print.cprint import *
+from colprint.cprint import *
 
 """
     This module is for simply print some colorful hints.
 """
 
-__version__ = "0.1"
+__version__ = "0.0.1"
 
 
-def c_print_usage():
+def colprint_usage():
     print('''
     style in this module:
     _ => underline
@@ -50,3 +50,7 @@ def c_print_usage():
     => "+gD"
     => "bold front_text is <code>'green'</code> and background is <code>'dark'</code>"
     ''')
+
+
+if __name__ == "__main__":
+    colprint_usage()
