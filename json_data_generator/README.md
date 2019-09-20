@@ -4,6 +4,10 @@
 
 
 
+```
+FakeREST 😉 🚀, the project aim to realize front fake REST API using personal json files, and also make effort of generating midium amount data, and GUI tool 
+```
+
 ***
 ***
 ```

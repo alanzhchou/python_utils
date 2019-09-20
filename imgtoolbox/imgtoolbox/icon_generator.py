@@ -14,3 +14,6 @@
 @Change log :
 19/7/12-1:20 created
 """
+
+from PIL import Image
+
